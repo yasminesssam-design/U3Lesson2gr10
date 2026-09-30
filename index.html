@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="ar"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mohtaref - Lesson 2</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;font-size:22px;background:#eef3fb;color:#1a2540;line-height:1.7}
+header{background:#0d2b6b;color:#fff;padding:12px;text-align:center;font-size:26px;font-weight:bold}
+.logo{display:inline-block;background:#f5b400;color:#0d2b6b;border-radius:12px;padding:2px 16px;margin:0 8px}
+main{max-width:1200px;margin:auto;padding:14px}
+.card{background:#fff;border-radius:16px;padding:18px;margin:12px 0;box-shadow:0 3px 10px #0002}
+h2{color:#c62828;font-size:30px;margin:6px 0}h3{color:#0d47a1;font-size:26px}
+button,input{font:inherit;font-size:24px;border-radius:12px;border:2px solid #0d47a1;padding:12px 18px;margin:6px 0}
+button{background:#0d47a1;color:#fff;cursor:pointer;width:100%}button.o{background:#fff;color:#1a2540;text-align:start}
+button.good{background:#2e7d32!important;color:#fff!important;border-color:#2e7d32}button.bad{background:#c62828!important;color:#fff!important;animation:sh .4s}
+input{width:100%}table{width:100%;border-collapse:collapse;font-size:20px}td,th{border:1px solid #999;padding:6px}th{background:#dbe6fb}
+@keyframes sh{25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+.pop{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font-size:110px;pointer-events:none;animation:up 1s forwards}
+@keyframes up{from{opacity:1;transform:scale(.5)}to{opacity:0;transform:scale(1.6)}}
+.bar{height:12px;background:#ccd;border-radius:8px}.bar i{display:block;height:100%;background:#f5b400;border-radius:8px}
+.g{background:#25d366}.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:800px){.g2{grid-template-columns:1fr}}
+</style></head><body>
+<header><span class="logo">محترف • Mohtaref</span></header><main id="m"></main>
+<script>
+const $=id=>document.getElementById(id),M=$('m');let name='',lang='ar';
+const mc=(q,o,a)=>({q,o,a}),tf=(q,b)=>({q,o:['✓','✗'],a:b?0:1});
+const B={en:[
+mc('A password should consist of ______.',['only letters','only numbers','only symbols','all of them'],3),
+mc('A password that can only be used once and changes regularly is called a/an ______.',['secret code','temporary password','one-time password','encryption key'],2),
+mc('The process of verifying the identity of a user trying to log into a system is known as ______.',['authentication','authorization','phishing','decryption'],0),
+mc('Ahmed logs into his email by typing a password and then entering a code sent to his phone. This method is called ______.',['biometric authentication','two-factor authentication','knowledge-based authentication','encryption'],1),
+mc('A student uses her fingerprint to unlock her laptop. This type of authentication is ______.',['knowledge-based','possession-based','biometric authentication','two-step authentication'],2),
+mc('Using an IC card or a one-time password is an example of ______ authentication.',['knowledge-based','biometric','possession-based','encryption'],2),
+mc('A method that performs two verifications using the same factor is called ______.',['two-step authentication','two-factor authentication','firewall','access control'],0),
+mc('The process of allowing only authorized users to access system data is called ______.',['verification','access control','encryption','backup'],1),
+mc('A school installs software that prevents external access and blocks harmful data. This system is a/an ______.',['antivirus','backup','firewall','router'],2),
+mc('The software that detects and removes computer viruses is called ______.',['firewall','spyware','antivirus','backup'],2),
+mc('A student downloads a file infected with malware. To avoid any damage, he should regularly update his ______.',['password','antivirus software','firewall','email app'],1),
+mc('When the system software is not updated, attackers can use ______ to steal data.',['firewalls','security holes','passwords','codes'],1),
+mc('Creating a copy of your data to prevent data loss or damage is called ______.',['authentication','backup','access control','encryption'],1),
+mc('Installing a firewall and antivirus software helps protect computers from ______.',['unauthorized access','password recovery','authentication','data sharing'],0),
+mc('Which of the following is an example of knowledge-based authentication?',['Fingerprint','Smart card','Password and PIN','SMS verification'],2),
+mc('Two-step authentication relies on ______.',['two different types of factors','two pieces of information of the same type of factor','Fingerprint + password','SMS code + smart card'],1),
+tf('A password is a string of characters used to verify that a user is legitimate.',1),
+tf('Using the same password for several accounts improves security.',0),
+tf('A one-time password can be used many times until it expires.',0),
+tf("Biometric authentication uses the person's fingerprint, face, or handwriting.",1),
+tf('Knowledge-based authentication depends on something the person knows.',1),
+tf('Possession-based authentication depends on something the person owns, such as an IC card.',1),
+tf('In two factor authentication, two different types of factors are used for verification.',1),
+tf('Two-step authentication uses two different types of authentication factors.',0),
+tf('Access control helps ensure only authorized users can access data.',1),
+tf('Firewalls protect computers by blocking unauthorized access from the outside.',1),
+tf('The antivirus software can detect and remove harmful programs.',1),
+tf('Ignoring operating system updates helps close security holes.',0),
+tf('Backups are useful when data is deleted or corrupted.',1),
+tf('Authentication is the process of encrypting information to keep it secret.',0),
+tf('A firewall and antivirus software must both be used for stronger protection.',1),
+tf('It is preferable for the password to be short so that it is easy to remember.',0),
+tf('Authentication using a password or a personal ID is a type of biometric authentication.',0),
+tf('Security holes are weaknesses in the software that attackers can exploit.',1)],
+ar:[
+mc('كلمة المرور هي سلسلة من الأحرف تستخدم للتحقق من ......',['البيانات','الفيروسات','الشبكة','هوية المستخدم'],3),
+mc('كلمة المرور لمرة واحدة تستخدم مرة ...... فقط.',['واحدة','عشر','متعددة','اثنتين'],0),
+mc('المصادقة هي عملية التحقق من ...... على كمبيوتر أو شبكة.',['البيانات','الهوية','البرامج','الفيروسات'],1),
+mc('المصادقة القائمة على المعرفة تعتمد على ...... يعرفها الفرد فقط.',['كلمة مرور','عنصر مادي','بصمة الإصبع','الشبكة'],0),
+mc('المصادقة البيومترية تستخدم ...... للفرد.',['الخصائص الفيزيائية','كلمة المرور','الخصائص السلوكية','كل من أ ، ج'],3),
+mc('المصادقة القائمة على الحيازة تعتمد على ...... يمتلكه الفرد.',['معلومة سرية','عنصر مادي','بصمة','معرف المستخدم'],1),
+mc('المصادقة الثنائية تستخدم ...... مختلفين.',['عاملين','سؤالين','كلمات مرور','شبكات'],0),
+mc('المصادقة متعددة الخطوات تعتمد على ...... باستخدام معلومتين من نفس النوع.',['خطوة واحدة','خطوتين','ثلاث خطوات','عاملين'],1),
+mc('التحكم في الوصول يحد من الوصول إلى أنظمة الكمبيوتر فقط لمستخدمين ......',['محددين','عشوائيين','جدد','غير مصرح لهم'],0),
+mc('جدار الحماية يمنع الوصول غير ...... من الخارج.',['قانوني','مصرح به','آمن','محمي'],1),
+mc('برنامج مكافحة الفيروسات يُستخدم لإزالة أو ...... الفيروسات.',['نسخ','إنشاء','نشر','عزل'],3),
+mc('تحديث تعريفات الفيروسات داخل البرنامج يساعد على منع ...... الأمنية.',['الشبكة','البيانات','المصادقة','الثغرات'],3),
+mc('الاحتفاظ بنظام التشغيل وبرامج التطبيقات محدثة يمنع ...... الأمنية.',['الهجمات','النسخ','الاختراق','جميع ما ذكر'],3),
+mc('إنشاء نسخ احتياطية للبيانات يتم بشكل ......',['دائم','دوري','عشوائي','نادر'],1),
+mc('إرشادات إنشاء كلمات المرور تتضمن عدم استخدام ...... شخصية.',['أحرف','أرقام','معلومات','رموز'],2),
+mc('كلمة المرور لمرة واحدة (OTP) تعني:',['كلمة مرور لا تتغير أبدًا','كلمة مرور يمكن استخدامها عدة مرات','كلمة مرور تتغير دوريًا وتستخدم مرة واحدة فقط','كلمة مرور تعتمد على تاريخ الميلاد'],2),
+mc('أي من التالي مثال على المصادقة القائمة على المعرفة؟',['بصمة الإصبع','بطاقة ذكية','كلمة المرور ورمز PIN','التحقق عبر SMS'],2),
+mc('المصادقة الثنائية باستخدام خطوتين (Two-step) تعتمد على:',['نوعين مختلفين من العوامل','معلومتين من نفس نوع العامل','بصمة + كلمة مرور','رمز عبر SMS + بطاقة ذكية'],1),
+tf('كلمة المرور هي سلسلة أحرف للتحقق من هوية المستخدم.',1),
+tf('كلمة المرور لمرة واحدة يمكن استخدامها عدة مرات قبل تغييرها.',0),
+tf('المصادقة هي عملية التحقق من هوية المستخدم على كمبيوتر أو شبكة.',1),
+tf('المصادقة القائمة على المعرفة تستخدم الخصائص الفيزيائية للفرد.',0),
+tf('بصمة الإصبع والقزحية من أمثلة المصادقة البيومترية.',1),
+tf('المصادقة القائمة على الحيازة تعتمد على شيء يمتلكه الفرد، مثل بطاقة ذكية.',1),
+tf('المصادقة الثنائية تستخدم نوع واحد فقط من العوامل للتحقق.',0),
+tf('المصادقة متعددة الخطوات تعتمد على خطوة واحدة فقط للتحقق من المستخدم.',0),
+tf('التحكم في الوصول يسمح فقط للمستخدمين المحددين بالوصول إلى البيانات.',1),
+tf('جدار الحماية يسمح بالوصول غير المصرح به من الخارج.',0),
+tf('برنامج مكافحة الفيروسات يقوم بعزل أو إزالة الفيروسات.',1),
+tf('تحديث تعريفات الفيروسات لا يؤثر على الثغرات الأمنية.',0),
+tf('تحديث نظام التشغيل وبرامج التطبيقات يمنع الثغرات الأمنية.',1),
+tf('النسخ الاحتياطية للبيانات يجب أن تتم بانتظام.',1),
+tf('كلمات المرور يجب أن تتضمن معلومات شخصية مثل تاريخ الميلاد.',0),
+tf('المصادقة باستخدام PIN هي مثال على المصادقة القائمة على المعرفة.',1),
+tf('التحقق من الرسائل النصية القصيرة مثال على المصادقة البيومترية.',0),
+tf('المصادقة باستخدام عنصر يمتلكه الفرد هي مصادقة قائمة على الحيازة.',1),
+tf('المصادقة الثنائية تجمع بين نوعين مختلفين من عوامل التحقق.',1),
+tf('كلمة المرور القصيرة والضعيفة تعتبر من أفضل الممارسات الأمنية.',0),
+tf('كلمة المرور هي سلسلة من الأحرف تستخدم للتحقق من أن المستخدم شرعي.',1),
+tf('يفضل أن تكون كلمة المرور قصيرة حتى يسهل تذكرها.',0),
+tf('المصادقة البيومترية تعتمد على خصائص مثل بصمة الإصبع وقزحية العين.',1),
+tf('في المصادقة الثنائية (Two-factor) يتم استخدام نوعين مختلفين من العوامل للتحقق.',1)]};
+const T={en:{d:'ltr',t:'Lesson 2: Threats and Countermeasures in Information Security (2)',n:'Enter your name',go:'Start',nx:'Next ▶',q:'Quick Quiz',ex:'Take the Exam (English)',sc:'Your score',send:'📲 Send result to WhatsApp',ok:'Correct! 🎉',no:'Wrong ❌',end:'Lesson finished! 🌟',
+S:[[`<h2>1) Passwords</h2><h3>Password</h3><p>A string of characters used to verify that the person using a given ID is the owner of the account.</p><h3>Guidelines for Creating Passwords</h3><p>① Use a string that is as long as possible.<br>② Combine: uppercase letters, lowercase letters, numbers, symbols.<br>③ <u>Do not</u> use personal information such as your birthday, email address, or user ID.<br>④ <u>Do not</u> reuse passwords used for other services.</p><h3>One-time password</h3><p>A password that changes at regular intervals and can only be used <u>once</u>.</p>`,[0,1,16,17,31]],
+[`<h2>2) Authentication</h2><p>The process of <b>verifying the identity</b> of a user on a computer or network.</p><h3>Types</h3><table><tr><th>Name</th><th>Method</th><th>Example</th></tr><tr><td>Knowledge-based</td><td>Information known only to the individual</td><td>User ID, Password, PIN code</td></tr><tr><td>Biometric</td><td>Physical or behavioural characteristics</td><td>Fingerprint, Iris, Vein pattern, Handwriting</td></tr><tr><td>Possession-based</td><td>An item the individual possesses</td><td>IC card, One-time password, SMS verification</td></tr></table><h3>Additional types</h3><table><tr><td><b>Two-factor</b></td><td>Combines two <b>different types</b> of factors</td><td>Password + Fingerprint</td></tr><tr><td><b>Two-step</b></td><td>Two steps using two pieces of information from the <b>same type</b></td><td>Password + one-time code</td></tr></table>`,[2,3,4,5,6]],
+[`<h2>3) Information Security Measures</h2><h3>Access Control</h3><p>Allows only authorized (verified) users to access computer systems or data.</p><h3>Firewall</h3><p>A system installed at network entry points to: ① prevent unauthorized access from outside, ② stop data leaks from within.</p><h3>Countermeasures Against Viruses</h3><p>① Install antivirus software and keep it up to date.<br>② Keep the operating system and applications updated to prevent security holes (vulnerabilities).<br>③ Regularly create backups of your data.</p>`,[7,8,9,11,12]]]},
+ar:{d:'rtl',t:'الدرس (٢): التهديدات والتدابير المضادة في أمن المعلومات ②',n:'اكتب اسمك',go:'ابدأ',nx:'التالي ◀',q:'اختبر نفسك',ex:'ابدأ الاختبار (بالعربي)',sc:'درجتك',send:'📲 أرسل النتيجة على الواتساب',ok:'إجابة صحيحة! 🎉',no:'إجابة خاطئة ❌',end:'أنهيت الدرس! 🌟',
+S:[[`<h2>١) كلمات المرور</h2><h3>كلمة المرور (Password)</h3><p>سلسلة من الأحرف تستخدم للتأكد من هوية المستخدم وأنه صاحب الحساب الشرعي.</p><h3>إرشادات إنشاء كلمات المرور</h3><p>① استخدم سلسلة أحرف (طويلة) قدر الإمكان.<br>② اجمع بين الأحرف الكبيرة والصغيرة والأرقام والرموز.<br>③ لا تستخدم معلومات شخصية مثل تاريخ ميلادك أو بريدك الإلكتروني أو معرف المستخدم أو رقم الهاتف.<br>④ لا تعد استخدام كلمات المرور المستخدمة في خدمات أخرى.</p><h3>كلمة المرور لمرة واحدة (OTP)</h3><p>يتم استخدامها مرة واحدة فقط وتتغير باستمرار لزيادة الأمان. مثال: عند استعادة كلمة المرور يصل رمز مؤقت عبر SMS ثم يصبح غير صالح.</p>`,[1,14,15,39,19]],
+[`<h2>٢) المصادقة (Authentication)</h2><p>عملية التأكد والتحقق من أن الشخص الذي يحاول الوصول إلى الجهاز أو الحساب أو الشبكة هو مستخدم حقيقي ومصرح له.</p><h3>أنواع المصادقة</h3><table><tr><th>الاسم</th><th>الطريقة</th><th>أمثلة</th></tr><tr><td>القائمة على المعرفة</td><td>معلومات يعرفها المستخدم فقط</td><td>معرف المستخدم، كلمة المرور، PIN</td></tr><tr><td>البيومترية</td><td>الخصائص الفيزيائية أو السلوكية للفرد</td><td>بصمة الإصبع، القزحية، نمط الوريد، خط اليد</td></tr><tr><td>القائمة على الحيازة</td><td>عنصر يمتلكه المستخدم</td><td>البطاقة الذكية، OTP، رمز SMS</td></tr><tr><td>الثنائية (عاملين مختلفين)</td><td>عاملان مختلفان معًا (معرفة + حيازة)</td><td>رقم PIN ثم رمز SMS</td></tr><tr><td>متعددة الخطوات</td><td>خطوتان بمعلومتين من نفس نوع العامل</td><td>كلمة المرور + سؤال سري</td></tr></table>`,[2,3,4,5,6]],
+[`<h2>٣) إجراءات أمن المعلومات</h2><h3>التحكم في الوصول</h3><p>يُسمح فقط للأشخاص المصرح لهم بالدخول من خلال المصادقة. الهدف: حماية البيانات ومنع الاستخدام غير المصرح به.</p><h3>جدار الحماية (Firewall)</h3><p>نظام أمني عند نقاط اتصال الشبكة بالإنترنت لمراقبة البيانات الداخلة والخارجة: منع المتسللين والفيروسات، وحماية البيانات من التسرب.</p><h3>إجراءات مواجهة الفيروسات</h3><p>① تثبيت برنامج مكافحة الفيروسات.<br>② تحديث تعريفات الفيروسات باستمرار.<br>③ تحديث نظام التشغيل والتطبيقات لإصلاح الثغرات الأمنية.<br>④ إنشاء نسخ احتياطية بانتظام.</p>`,[8,9,10,11,12]]]}};
+const pop=(e)=>{const d=document.createElement('div');d.className='pop';d.textContent=e;document.body.appendChild(d);setTimeout(()=>d.remove(),1000)};
+const beep=(f,t)=>{try{const c=new (window.AudioContext||webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.frequency.value=f;o.type=t;o.connect(g);g.connect(c.destination);g.gain.value=.2;o.start();o.stop(c.currentTime+.25)}catch(e){}};
+const yay=()=>{[523,659,784].forEach((f,i)=>setTimeout(()=>beep(f,'sine'),i*120));pop('⭐')};const oops=()=>{beep(150,'sawtooth');pop('❌')};
+function home(){M.innerHTML=`<div class="card" style="text-align:center"><h2>Mohtaref • محترف</h2><p>Lesson 2 – Information Security | الدرس الثاني – أمن المعلومات</p><input id="nm" placeholder="الاسم / Name" value="${name}"><button onclick="lesson()">📘 ابدأ الدرس / Start the Lesson</button><button class="g" onclick="exam('ar')">📝 اختبار عربي (الكل)</button><button class="g" onclick="exam('en')">📝 English Exam (All)</button></div>`}
+function gn(){name=$('nm').value.trim();if(!name){$('nm').style.borderColor='red';$('nm').focus();return false}return true}
+function lesson(){if(!gn())return;sec(0)}
+function sec(i){if(i>2){M.innerHTML=`<div class="card" style="text-align:center"><h2>🌟 أنهيت الدرس! / Lesson finished!</h2><button class="g" onclick="exam('ar')">📝 ابدأ الاختبار (بالعربي)</button><button class="g" onclick="exam('en')">📝 Take the Exam (English)</button><button onclick="home()">⌂</button></div>`;return}
+M.innerHTML=`<div class="bar"><i style="width:${(i+1)*33}%"></i></div><div class="g2"><div class="card" dir="ltr">${T.en.S[i][0]}</div><div class="card" dir="rtl">${T.ar.S[i][0]}</div></div><div class="card" style="text-align:center"><button onclick="quiz(${i},'ar')">❓ اختبر نفسك (بالعربي)</button><button onclick="quiz(${i},'en')">❓ Quick Quiz (English)</button><button class="g" onclick="sec(${i+1})">التالي / Next ▶</button></div>`}
+function quiz(i,l){lang=l;run(T[l].S[i][1],false,()=>sec(i))}
+function exam(l){if(!gn())return;lang=l;run(B[l].map((_,k)=>k),true,null)}
+function run(ids,isEx,done){const t=T[lang],bank=B[lang];let k=0,sc=0,wr=[];
+function show(){if(k>=ids.length){if(isEx)return fin();M.innerHTML=`<div class="card" dir="${t.d}"><h2>${t.sc}: ${sc}/${ids.length}</h2><button onclick="_d()">${t.nx}</button></div>`;window._d=done;return}
+const q=bank[ids[k]];M.innerHTML=`<div class="card" dir="${t.d}"><div class="bar"><i style="width:${k/ids.length*100}%"></i></div><p>${k+1}/${ids.length}</p><h3>${q.q}</h3>${q.o.map((o,j)=>`<button class="o" data-j="${j}">${o}</button>`).join('')}</div>`;
+M.querySelectorAll('.o').forEach(b=>b.onclick=()=>{const j=+b.dataset.j;M.querySelectorAll('.o').forEach(x=>x.disabled=true);M.querySelectorAll('.o')[q.a].classList.add('good');if(j==q.a){sc++;yay()}else{b.classList.add('bad');oops();wr.push(ids[k]+1)}setTimeout(()=>{k++;show()},1100)})}
+function fin(){const msg=`${name}\n${lang=='ar'?'اختبار الدرس الثاني - أمن المعلومات':'Lesson 2 Exam - Information Security'}\n${t.sc}: ${sc}/${ids.length}\n${lang=='ar'?'الأسئلة الخاطئة':'Wrong'}: ${wr.join(', ')||'-'}`;
+M.innerHTML=`<div class="card" dir="${t.d}" style="text-align:center"><h2>${name}</h2><h2>${t.sc}: ${sc}/${ids.length}</h2><a href="https://wa.me/201099920517?text=${encodeURIComponent(msg)}" target="_blank"><button class="g">${t.send}</button></a><button onclick="home()">⌂</button></div>`;yay()}
+if(done)T[lang].cb=done;show()}
+home();
+</script></body></html>
